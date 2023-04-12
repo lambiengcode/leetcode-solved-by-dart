@@ -58,3 +58,12 @@ bool isPalindrome(int x) {
 }
 
 ```
+
+### Regular Expression Matching
+
+```dart
+bool isMatch(String s, String p) {
+  final RegExp regExp = RegExp(p);
+  return regExp.stringMatch(s) == s;
+}
+```
