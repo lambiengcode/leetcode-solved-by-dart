@@ -67,3 +67,28 @@ bool isMatch(String s, String p) {
   return regExp.stringMatch(s) == s;
 }
 ```
+
+### Container with most water
+
+```dart
+int maxArea(List<int> height) {
+  int max = 0;
+
+  int left = 0;
+  int right = height.length - 1;
+
+  while (left < right) {
+    final res = min(height[left], height[right]) * (right - left);
+
+    if (res > max) max = res;
+
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return max;
+}
+```
