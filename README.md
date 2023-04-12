@@ -48,3 +48,13 @@ int myAtoi(String s) {
   return number.round();
 }
 ```
+
+### Is Palindrome
+
+```dart
+bool isPalindrome(int x) {
+  final String str = x.toString();
+  return str == str.split('').reversed.join().toString();
+}
+
+```
