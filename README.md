@@ -135,3 +135,29 @@ String intToRoman(int num) {
   return result.join();
 }
 ```
+
+### Validate Stack Sequences
+
+```dart
+bool validateStackSequences(List<int> pushed, List<int> popped) {
+  List<int> current = [];
+  int indexPush = 0;
+  int indexPop = 0;
+
+  while (indexPush < pushed.length - 1 || indexPop < popped.length - 1) {
+    if (current.contains(popped[indexPop])) {
+      if (current.last == popped[indexPop]) {
+        current.removeLast();
+        indexPop++;
+      } else {
+        return false;
+      }
+    } else {
+      current.add(pushed[indexPush]);
+      indexPush++;
+    }
+  }
+
+  return true;
+}
+```
