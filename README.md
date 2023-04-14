@@ -202,3 +202,55 @@ ListNode linkedNodes(List<int> values) {
   return nodes.first;
 }
 ```
+
+### Substring with Concatenation of All Words
+```dart
+List<int> findSubstring(String s, List<String> words) {
+  if (words.isEmpty || s.isEmpty || words.first.isEmpty) return [];
+
+  final List<int> startIndexs = [];
+
+  final int k = words.first.length;
+  final int lengthOfMatchWords = words.length * k;
+  final listCloned = words.map((e) => e).toList();
+
+  listCloned.sort();
+
+  if (s.length < lengthOfMatchWords) return [];
+
+  for (final word in words.toSet().toList()) {
+    final RegExp regExp = RegExp('(?=($word))');
+    final Iterable<Match> matches = regExp.allMatches(s);
+
+    if (matches.isEmpty) break;
+
+    for (final match in matches) {
+      if (match.start + lengthOfMatchWords <= s.length) {
+        final String subString = s.substring(
+          match.start,
+          match.start + lengthOfMatchWords,
+        );
+
+        final List<String> chunks = [];
+
+        for (int i = 0; i < subString.length; i += k) {
+          var end = (i + k < subString.length) ? i + k : subString.length;
+          chunks.add(subString.substring(i, end));
+        }
+
+        chunks.sort();
+
+        // Check match with requiments
+        if (chunks.join() == listCloned.join() &&
+            !startIndexs.contains(match.start)) {
+          startIndexs.add(match.start);
+        }
+      }
+    }
+  }
+
+  startIndexs.sort();
+
+  return startIndexs;
+}
+```
