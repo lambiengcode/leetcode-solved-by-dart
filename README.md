@@ -1,5 +1,7 @@
 ## :lion: Leetcode :seedling:
 
+<img src="https://github.com/lambiengcode/leetcode-solved-by-dart/blob/master/img/leetcode-dart.png?raw=true" width="100%" height="auto"/>
+
 ### String to Int - Atoi
 
 ```dart
