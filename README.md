@@ -317,3 +317,19 @@ ListNode? linkedNodes(List<int> values) {
   return nodes.first;
 }
 ```
+
+### Kids With the Greatest Number of Candies
+
+```dart
+List<bool> kidsWithCandies(List<int> candies, int extraCandies) {
+  final List<int> clone = candies.map((e) => e).toList();
+  clone.sort((a, b) => b - a);
+  int greatest = clone.first;
+
+  final List<bool> result = candies.map((e) {
+    return e + extraCandies >= greatest;
+  }).toList();
+
+  return result;
+}
+```
