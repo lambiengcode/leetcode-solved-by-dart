@@ -385,3 +385,22 @@ bool _isValid(List<List<String>> board, int row, int col, int k) {
   return true;
 }
 ```
+
+### First Missing Positive
+
+```dart
+int firstMissingPositive(List<int> nums) {
+  nums = nums.where((e) => e > 0).toSet().toList();
+  nums.sort();
+
+  if (nums.isEmpty || nums.first != 1) return 1;
+
+  for (int index = 1; index < nums.length; index++) {
+    if (nums[index] - nums[index - 1] != 1) {
+      return nums[index - 1] + 1;
+    }
+  }
+
+  return nums.last + 1;
+}
+```
