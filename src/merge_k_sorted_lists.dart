@@ -1,5 +1,5 @@
-import 'helpers/list_node_helper.dart';
-import 'models/list_node.dart';
+import '../helpers/list_node_helper.dart';
+import '../models/list_node.dart';
 
 void main(List<String> args) {
   List<List<List<int>>> cases = [

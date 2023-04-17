@@ -1,4 +1,4 @@
-import 'models/list_node.dart';
+import '../models/list_node.dart';
 
 void main(List<String> args) {
   List<int> vals = [1, 2, 3, 4, 5];

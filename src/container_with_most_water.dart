@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'helpers/stop_watch.dart';
+import '../helpers/stop_watch.dart';
 
 void main(List<String> args) {
   List<List<int>> cases = [
