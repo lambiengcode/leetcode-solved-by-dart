@@ -13,7 +13,26 @@ void main(List<String> args) {
 }
 
 bool isMatch(String s, String p) {
-  final RegExp regExp = RegExp(p.replaceAll('*', '^g\.*').replaceAll('?', '^g\.?'));
-  print(regExp.stringMatch(s));
-  return regExp.stringMatch(s) == s;
+  if (p.replaceAll("*", "").length > s.length) return false;
+
+  List<bool> flags = List.generate(s.length + 1, (index) => false);
+  flags.first = true;
+  for (int i = 1; i < s.length; ++i) {
+    flags[i] = false;
+  }
+
+  for (int i = 1; i <= p.length; ++i) {
+    String char = p[i - 1];
+    if (char == '*') {
+      for (int j = 1; j <= s.length; ++j) {
+        flags[j] = flags[j - 1] || flags[j];
+      }
+    } else {
+      for (int j = s.length; j >= 1; --j) {
+        flags[j] = flags[j - 1] && (char == '?' || char == s[j - 1]);
+      }
+    }
+    flags[0] = flags[0] && char == '*';
+  }
+  return flags[s.length];
 }
