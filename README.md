@@ -506,3 +506,13 @@ void place(
   }
 }
 ```
+
+### Valid number
+
+```dart
+bool isNumber(String s) {
+  if (s == "Infinity" || s == "-Infinity" || s == "+Infinity") return false;
+
+  return num.tryParse(s) != null;
+}
+```
