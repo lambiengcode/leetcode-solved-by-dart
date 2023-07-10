@@ -2,6 +2,29 @@
 
 <img src="https://github.com/lambiengcode/leetcode-solved-by-dart/blob/master/img/leetcode-dart.png?raw=true" width="100%" height="auto"/>
 
+## Table of Contents
+- [:lion: Leetcode :seedling:](#lion-leetcode-seedling)
+- [Table of Contents](#table-of-contents)
+  - [String to Int - Atoi](#string-to-int---atoi)
+  - [Is Palindrome](#is-palindrome)
+  - [Regular Expression Matching](#regular-expression-matching)
+  - [Container with most water](#container-with-most-water)
+  - [Integer to Roman](#integer-to-roman)
+  - [Validate Stack Sequences](#validate-stack-sequences)
+  - [Reverse Nodes in k-Group](#reverse-nodes-in-k-group)
+  - [Substring with Concatenation of All Words](#substring-with-concatenation-of-all-words)
+  - [Longest Valid Parentheses](#longest-valid-parentheses)
+  - [Merge k Sorted Lists](#merge-k-sorted-lists)
+  - [Kids With the Greatest Number of Candies](#kids-with-the-greatest-number-of-candies)
+  - [Sudoku Solver](#sudoku-solver)
+  - [First Missing Positive](#first-missing-positive)
+  - [Trapping rain water](#trapping-rain-water)
+  - [Wildcard Matching](#wildcard-matching)
+  - [N Queens](#n-queens)
+  - [Valid number](#valid-number)
+  - [Text Justification](#text-justification)
+  - [3 Sum](#3-sum)
+
 ### String to Int - Atoi
 
 ```dart
@@ -578,5 +601,42 @@ List<String> fillSpace(List<String> words, int maxWidth) {
   }
 
   return words;
+}
+```
+
+### 3 Sum
+
+```dart
+List<List<int>> threeSum(List<int> nums) {
+  nums.sort();
+
+  final List<List<int>> result = [];
+
+  for (int i = 0; i < nums.length - 2; i++) {
+    if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+    int left = i + 1;
+    int right = nums.length - 1;
+
+    while (left < right) {
+      final int sum = nums[i] + nums[left] + nums[right];
+
+      if (sum == 0) {
+        result.add([nums[i], nums[left], nums[right]]);
+
+        // remove duplicate
+        while (left < nums.length - 1 && nums[left] == nums[left + 1]) left++;
+        while (right > 0 && nums[right] == nums[right - 1]) right--;
+        left++;
+        right--;
+      } else if (sum < 0) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+
+  return result;
 }
 ```
