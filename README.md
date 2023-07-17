@@ -26,6 +26,7 @@
   - [3 Sum](#3-sum)
   - [3 Sum Closest](#3-sum-closest)
   - [Letter combinations of a phone number](#letter-combinations-of-a-phone-number)
+  - [Jump Game II](#jump-game-ii)
 
 ### String to Int - Atoi
 
@@ -718,5 +719,27 @@ void lookupChar(
       lookupChar(index + 1, res + letters[i], length, digits, result);
     }
   }
+}
+```
+
+### Jump Game II
+
+```dart
+int jump(List<int> nums) {
+  if (nums.isEmpty) return 0;
+
+  int result = 0;
+  int maxNumber = 0;
+  int cur = 0;
+
+  for (var i = 0; i < nums.length - 1; i++) {
+    maxNumber = max(maxNumber, i + nums[i]);
+    if (i == cur) {
+      result++;
+      cur = maxNumber;
+    }
+  }
+
+  return result;
 }
 ```
